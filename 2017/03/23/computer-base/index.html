@@ -106,7 +106,7 @@
 区别:
 “优雅降级”观点认为应该针对那些最高级、最完善的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前段面试题--前端和计算机相关知识">
+<meta property="og:title" content="前端面试题--前端和计算机相关知识">
 <meta property="og:url" content="http://yoursite.com/2017/03/23/computer-base/index.html">
 <meta property="og:site_name" content="Cainghong">
 <meta property="og:description" content="你能描述一下渐进增强和优雅降级之间的不同吗?
@@ -118,9 +118,9 @@
 都关注于同一网站在不同设备里不同浏览器下的表现程度
 区别:
 “优雅降级”观点认为应该针对那些最高级、最完善的">
-<meta property="og:updated_time" content="2017-03-23T05:46:40.000Z">
+<meta property="og:updated_time" content="2017-03-23T06:15:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前段面试题--前端和计算机相关知识">
+<meta name="twitter:title" content="前端面试题--前端和计算机相关知识">
 <meta name="twitter:description" content="你能描述一下渐进增强和优雅降级之间的不同吗?
 定义:
 优雅降级（graceful degradation): 一开始就构建站点的完整功能，然后针对浏览器测试和修复
@@ -163,7 +163,7 @@
 
 
 
-  <title> 前段面试题--前端和计算机相关知识 | Cainghong </title>
+  <title> 前端面试题--前端和计算机相关知识 | Cainghong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -303,7 +303,7 @@
             
             
               
-                前段面试题--前端和计算机相关知识
+                前端面试题--前端和计算机相关知识
               
             
           </h1>
@@ -420,6 +420,164 @@
 <li>解决方法: 设置inline并触法haslayout</li>
 <li>display:inline-block; <em>display:inline; </em>zoom:1 </li>
 </ul>
+</li>
+</ul>
+</li>
+<li>如何对网站的文件和资源进行优化?<ul>
+<li>文件合并（同上题“假若你有5个不同的 CSS 文件, 加载进页面的最好方式是？”）<ul>
+<li>减少调用其他页面、文件的数量。一般我们为了让页面生动活泼会大量使用background来加载背景图，而每个 background的图像都会产生1次HTTP请求，要改善这个状况，可以采用css的1个有用的background-position属 性来加载背景图，我们将需要频繁加载的多个图片合成为1个单独的图片，需要加载时可以采用：background:url(….) no-repeat x-offset y-offset;的形式加载即可将这部分图片加载的HTTP请求缩减为1个。</li>
+<li>每个http请求都会产生一次从你的浏览器到服务器端网络往返过程，并且导致推迟到达服务器端和返回浏览器端的时间，我们称之为延迟。</li>
+</ul>
+</li>
+<li>文件最小化/文件压缩<ul>
+<li>即将需要传输的内容压缩后传输到客户端再解压，这样在网络上传输的 数据量就会大幅减小。通常在服务器上的Apache、Nginx可以直接开启这个设置，也可以从代码角度直接设置传输文件头，增加gzip的设置，也可以 从 负载均衡设备直接设置。不过需要留意的是，这个设置会略微增加服务器的负担。建议服务器性能不是很好的网站，要慎重考虑。</li>
+<li>js和css文件在百度上搜一个压缩网站就能压缩，但是在实际开发的项目中，使用gulp、webpack等工具可以打包出合并压缩后的文件，小图片可以在打包时转换成base64方式引入，大图片可以被压缩，html文件也是可以被压缩的</li>
+</ul>
+</li>
+<li>使用 CDN 托管<ul>
+<li>CDN的全称是Content Delivery Network，即内容分发网络。其基本思路是尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定。其目的是使用户可就近取得所需内容，解决 Internet网络拥挤的状况，提高用户访问网站的响应速度。</li>
+</ul>
+</li>
+<li>缓存的使用<ul>
+<li>Ajax调用都采用缓存调用方式，一般采用附加特征参数方式实现，注意其中的&lt;script src=”xxx.js?{VERHASH}”，{VERHASH}就是特征参数，这个参数不变化就使用缓存文件，如果发生变化则重新下载新文件或更新信息。</li>
+</ul>
+</li>
+<li>css文件放置在head，js放置在文档尾</li>
+<li>在服务器端配置control-cache  last-modify-date</li>
+<li>在服务器配置Entity-Tag     if-none-match</li>
+<li>用更少的时间下载更多的文件，提高网站加载速度，提高用户体验，可以使用以下方法：<ol>
+<li>css sprites—-将小图片合并为一张大图片，使用background-position等css属性取得图片位置</li>
+<li>将资源放在多个域名下—–打开控制台，可以看到很多网站都是这么做的~</li>
+<li>图片延迟加载—–很多电商网站、新闻网站，尤其是用到瀑布流展示图片的时候，很多都这么做了，这个技术已经很普遍~</li>
+</ol>
+</li>
+<li>书写代码的时候要注意优化： <ol>
+<li>css<ul>
+<li>将可以合并的样式合并起来，比如margin-top、margin-bottom等。</li>
+<li>给img图片设置宽高，因为浏览器渲染元素的时候没有找到这两个参数，需要一边下载图片一边计算大小，如果图片很多，浏览器需要不断地调整页面。这不但影响速度，也影响浏览体验。当浏览器知道了高度和宽度参数后，即使图片暂时无法显示，页面上也会腾出图片的空位，然后继续加载后面的内容。从而加载时间快了，浏览体验也更好了。</li>
+</ul>
+</li>
+<li>js<ul>
+<li>少改变DOM元素，少触发reflow，可以复用的代码提出来写成公共的等等……</li>
+</ul>
+</li>
+<li>img<ul>
+<li>优化图片，不失真的情况下尽量减少图片大小，使用iconfont等</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>怎么学习前端? 怎么接触web新知识? </li>
+<li>关于前后端分离:<ul>
+<li>前端：负责View和Controller层。</li>
+<li>后端：只负责Model层，业务处理/数据等。</li>
+</ul>
+</li>
+<li>关于浏览器内核(渲染引擎)<ul>
+<li>先说一下浏览器的结构：<ul>
+<li>①、用户界面（UI） - 包括菜单栏、工具栏、地址栏、后退/前进按钮、书签目录等，也就是能看到的除了显示页面的主窗口之外的部分；</li>
+<li>②、浏览器引擎（Rendering engine） - 也被称为浏览器内核、渲染引擎，主要负责取得页面内容、整理信息（应用CSS）、计算页面的显示方式，然后会输出到显示器或者打印机；</li>
+<li>③、JS解释器 - 也可以称为JS内核，主要负责处理javascript脚本程序，一般都会附带在浏览器之中，例如chrome的V8引擎；</li>
+<li>④、网络部分 - 主要用于网络调用，例如：HTTP请求，其接口与平台无关，并为所有的平台提供底层实现；</li>
+<li>⑤、UI后端 - 用于绘制基本的窗口部件，比如组合框和窗口等。</li>
+<li>⑥、数据存储 - 保存类似于cookie、storage等数据部分，HTML5新增了web database技术，一种完整的轻量级客户端存储技术。</li>
+<li>注：IE只为每个浏览器窗口启用单独的进程，而chrome浏览器却为每个tab页面单独启用进程，也就是每个tab都有独立的渲染引擎实例。</li>
+</ul>
+</li>
+<li>现在的主要浏览器：<ul>
+<li>IE、Firefox、Safari、Chrome、Opera。</li>
+<li>它们的浏览器内核（渲染引擎）：<ul>
+<li>IE–Trident、</li>
+<li>FF(Mozilla)–Gecko、</li>
+<li>Safari–Webkit、</li>
+<li>Chrome–Blink（WebKit的分支）、</li>
+<li>Opera–原为Presto，现为Blink。</li>
+</ul>
+</li>
+<li>因此在开发中，兼容IE、FF、Opera（Presto引擎是逐步放弃的）、Chrome和Safari中的一种即可，Safari、Chrome的引擎是相似的。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浏览器加载文件(repaint/reflow)<ul>
+<li>文件加载顺序<ul>
+<li>浏览器加载页面上引用的CSS、JS文件、图片时，是按顺序从上到下加载的，每个浏览器可以同时下载文件的个数不同，因此经常有网站将静态文件放在不同的域名下，这样可以加快网站打开的速度。</li>
+</ul>
+</li>
+<li>reflow<ul>
+<li>在加载JS文件时，浏览器会阻止页面的渲染，因此将js放在页面底部比较好。</li>
+<li>因为如果JS文件中有修改DOM的地方，浏览器会倒回去把已经渲染过的元素重新渲染一遍，这个回退的过程叫reflow。</li>
+<li>CSS文件虽然不影响js文件的加载，但是却影响js文件的执行，即使js文件内只有一行代码，也会造成阻塞。因为可能会有var width = $(‘#id’).width()这样的语句，这意味着，js代码执行前，浏览器必须保证css文件已下载和解析完成。</li>
+<li>办法：当js文件不需要依赖css文件时，可以将js文件放在头部css的前面。</li>
+</ul>
+</li>
+<li>常见的能引起reflow的行为：<ul>
+<li>1.改变窗囗大小</li>
+<li>2.改变文字大小</li>
+<li>3.添加/删除样式表</li>
+<li>4.脚本操作DOM</li>
+<li>5.设置style属性</li>
+<li>等等……</li>
+</ul>
+</li>
+<li>reflow是不可避免的，只能尽量减小，常用的方法有：<ul>
+<li>1.尽量不用行内样式style属性，操作元素样式的时候用添加去掉class类的方式</li>
+<li>2.给元素加动画的时候，可以把该元素的定位设置成absolute或者fixed，这样不会影响其他元素</li>
+</ul>
+</li>
+<li>repaint<ul>
+<li>另外，有个和reflow相似的术语，叫做repaint（重绘），在元素改变样式的时候触发，这个比reflow造成的影响要小，所以能触发repaint解决的时候就不要触发reflow……</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>为什么利用多个域名来请求网络资源会更有效？<ul>
+<li>动静分离需求，使用不同的服务器处理请求。处理动态内容的只处理动态内容，不处理别的，提高效率。CDN缓存更方便</li>
+<li>突破浏览器并发限制：相关问题： 浏览器同一时间可以从一个域名下载多少资源？（即： 浏览器并发请求数）<ul>
+<li>也就是说：同一时间针对同一域名下的请求有一定数量限制。超过限制数目的请求会被阻止。不同浏览器这个限制的数目不一样。</li>
+</ul>
+</li>
+<li>Cookieless, 节省带宽，尤其是上行带宽 一般比下行要慢。</li>
+<li>用户的每次访问，都会带上自己的cookie ，挺大的。假如twitter 的图片放在主站域名下，那么用户每次访问图片时，request header 里就会带有自己的cookie ，header 里的cookie 还不能压缩，而图片是不需要知道用户的cookie 的，所以这部分带宽就白白浪费了。</li>
+<li>节约主域名的连接数，从而提高客户端网络带宽的利用率，优化页面响应。因为老的浏览器（IE6是典型），针对同一个域名只允许同时保持两个HTTP连接。将图片等资源请求分配到其他域名上，避免了大图片之类的并不一定重要的内容阻塞住主域名上其他后续资源的连接（比如ajax请求）。</li>
+<li>避免不必要的安全问题( 上传js窃取主站cookie之类的)</li>
+</ul>
+</li>
+<li>进程和线程的区别<ul>
+<li>一个程序至少有一个进程,一个进程至少有一个线程.</li>
+<li>线程的划分尺度小于进程，使得多线程程序的并发性高。</li>
+<li>线程是独立调度的基本单位, 进程是拥有资源的基本单位</li>
+<li>另外，进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率。</li>
+<li>线程在执行过程中与进程还是有区别的。<ul>
+<li>每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。</li>
+<li>但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。</li>
+</ul>
+</li>
+<li>从逻辑角度来看，<ul>
+<li>多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配。这就是进程和线程的重要区别。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>前端开发的优化问题</p>
+<ul>
+<li><p>前端开发的优化问题：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">(1) 减少http请求次数：css spirit,data uri</div><div class="line">(2) JS，CSS源码压缩</div><div class="line">(3) 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数</div><div class="line">(4) 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能</div><div class="line">(5) 用setTimeout来避免页面失去响应</div><div class="line">(6) 用hash-table来优化查找</div><div class="line">(7) 当需要设置的样式很多时设置className而不是直接操作style </div><div class="line">(8) 少用全局变量</div><div class="line">(9) 缓存DOM节点查找的结果</div><div class="line">(10) 避免使用CSS Expression</div><div class="line">(11) 图片预载</div><div class="line">(12) 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢</div></pre></td></tr></table></figure>
+</li>
+<li><p>如何控制网页在网络传输过程中的数据量</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">（1）启用GZIP压缩</div><div class="line">（2）保持良好的编程习惯，避免重复的CSS，JavaScript代码，多余的HTML标签和属性</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Flash、Ajax各自的优缺点，在使用中如何取舍?</p>
+<ul>
+<li><p>Ajax的优势</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    　　(1) 可搜索型</div><div class="line">    　　(2) 开放性</div><div class="line">    　　(3) 费用</div><div class="line">    　　(4) 易用性</div><div class="line">    　　(5) 易于开发</div></pre></td></tr></table></figure>
+</li>
+<li><p>Flash的优势</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">    　　(1) 多媒体处理</div><div class="line">    　　(2) 兼容性</div><div class="line">    　　(3) 矢量图形 比SVG，Canvas优势大很多</div><div class="line">    　　(4) 客户端资源调度，比如麦克风，摄像头</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
