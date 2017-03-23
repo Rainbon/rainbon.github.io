@@ -113,7 +113,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":true,"scrollpercent":false},
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":true,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -163,7 +163,7 @@
     
   
 
-  <div class="container sidebar-position-left 
+  <div class="container sidebar-position-right 
    page-home 
  ">
     <div class="headband"></div>
@@ -249,6 +249,196 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/23/computer-base/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cainghong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/timg.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cainghong">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/23/computer-base/" itemprop="url">
+                  前段面试题--前端和计算机相关知识
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T13:23:33+08:00">
+                2017-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>你能描述一下渐进增强和优雅降级之间的不同吗?<ul>
+<li>定义:<ul>
+<li>优雅降级（graceful degradation): 一开始就构建站点的完整功能，然后针对浏览器测试和修复</li>
+<li>渐进增强（progressive enhancement): 一开始只构建站点的最少特性，然后不断针对各浏览器追加功能。</li>
+</ul>
+</li>
+<li>都关注于同一网站在不同设备里不同浏览器下的表现程度</li>
+<li>区别:<ul>
+<li>“优雅降级”观点认为应该针对那些最高级、最完善的浏览器来设计网站. 而将那些被认为“过时”或有功能缺失的浏览器下的测试工作安排在开发周期的最后阶段，并把测试对象限定为主流浏览器（如 IE、Mozilla 等）的前一个版本。</li>
+<li>“渐进增强”观点则认为应关注于内容本身。请注意其中的差别：我甚至连“浏览器”三个字都没提。</li>
+</ul>
+</li>
+<li>理解:<ul>
+<li>“优雅降级”就是首先完整地实现整个网站,包括其中的功能和效果. 然后再为那些无法支持所有功能的浏览器增加候选方案, 使之在旧式浏览器上以某种形式降级体验却不至于完全失效.</li>
+<li>“渐进增强”则是从浏览器支持的基本功能开始, 首先为所有设备准备好清晰且语义化的html及完整内容, 然后再以无侵入的方法向页面增加无害于基础浏览器的额外样式和功能. 当浏览器升级时, 它们会自动呈现并发挥作用.    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浏览器兼容问题:<ul>
+<li>问题1   不同浏览器的标签默认的外补丁和内补丁不同.<ul>
+<li>即随便写几个标签, 在不加样式控制的情况下, 各自的margin和padding差异较大.</li>
+<li>解决方法: CCS里:   *{margin:0; padding:0}</li>
+</ul>
+</li>
+<li>问题2   块属性标签float后，又有横行的margin情况下，在IE6显示margin比设置的大　<ul>
+<li>会使得ie6后面的一块被顶到下一行.</li>
+<li>解决方案: 在float的标签样式中加入 display: inline; 将其转化为行内属性</li>
+</ul>
+</li>
+<li>问题3  设置较小高度标签（一般小于10px），在IE6，IE7，遨游中高度超出自己设置高度<ul>
+<li>IE6、7和遨游里这个标签的高度不受控制，超出自己设置的高度</li>
+<li>解决方案: 给超出高度的标签设置overflow:hidden;或者设置行高line-height 小于你设置的高度</li>
+<li>原因: ie8之前的浏览器都会给标签一个最小默认的行高的高度. 即使标签是空的,这个标签的高度还是会达到默认的行高.</li>
+</ul>
+</li>
+<li>问题4  行内属性标签，设置display:block后采用float布局，又有横行的margin的情况，IE6间距bug<ul>
+<li>解决: 在display:block;后面加入display:inline;display:table;</li>
+</ul>
+</li>
+<li>问题5  图片默认有间距<ul>
+<li>几个img标签放在一起的时候，有些浏览器会有默认的间距，加了问题一中提到的通配符也不起作用。</li>
+<li>解决: 使用float属性为img布局</li>
+</ul>
+</li>
+<li>问题6  标签最低高度设置min-height不兼容<ul>
+<li>因为min-height本身就是一个不兼容的CSS属性，所以设置min-height时不能很好的被各个浏览器兼容</li>
+<li>如果我们要设置一个标签的最小高度200px，需要进行的设置为：{min-height:200px; height:auto !important; height:200px; overflow:visible;}</li>
+</ul>
+</li>
+<li>问题7  透明度的兼容CSS设置<ul>
+<li>使用hacker</li>
+<li>IE6认识的hacker是下划线_和*</li>
+<li>IE7,遨游认识的hacker是*</li>
+</ul>
+</li>
+<li>问题8  IE ol的序号全为1, 不递增<ul>
+<li>解决: li设置样式{display: list-item}</li>
+</ul>
+</li>
+<li>问题9 <ul>
+<li>ie6,7不支持display:inline-block</li>
+<li>解决方法: 设置inline并触法haslayout</li>
+<li>display:inline-block; <em>display:inline; </em>zoom:1 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -683,7 +873,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
