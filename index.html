@@ -252,33 +252,6 @@
     
       
 
-
-         
-
-
-#以下部分为：字数统计、阅读时长插入代码
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">(分)</span>
-
-         </span>
-#以上部分为：字数统计、阅读时长插入代码
-
-
   
 
   
@@ -385,55 +358,15 @@
       
         
           
-            <h1 id="Webpack是什么"><a href="#Webpack是什么" class="headerlink" title="Webpack是什么"></a>Webpack是什么</h1><p>首先可以看下<a href="http://webpack.github.io/" target="_blank" rel="external">官方文档</a>，文档是最好的老师。<a href="https://github.com/petehunt/webpack-howto" target="_blank" rel="external">这里</a>也有国外的一个朋友写的入门介绍。<br>Webpack是由Tobias Koppers开发的一个开源前端模块构建工具。它的基本功能是将以模块格式书写的多个JavaScript文件打包成一个文件，同时支持CommonJS和AMD格式。但让它与众不同的是，它提供了强大的loader API来定义对不同文件格式的预处理逻辑，从而让我们可以将CSS、模板，甚至是自定义的文件格式当做JavaScript模块来使用。Webpack 基于loader还可以实现大量高级功能，比如自动分块打包并按需加载、对图片资源引用的自动定位、根据图片大小决定是否用base64内联、开发时的模块热替换等等，可以说是目前前端构建领域最有竞争力的解决方案之一。<br><img src="http://webpack.github.io/assets/what-is-webpack.png" alt="webpack"></p>
-<h1 id="为什么使用Webpack"><a href="#为什么使用Webpack" class="headerlink" title="为什么使用Webpack"></a>为什么使用Webpack</h1><ul>
-<li>他类似browserify 但是可以把你的应用分离成许多文件，如果你有许多页面在你的单页应用里面，用户只需要下载当前页面所需要的代码。如果你跳转到另一个页面，他们不需要重新加载通用的代码。</li>
-<li>他能替代grunt或者gulp大部分的功能 因为他可以构建和打包CSS，预处理CSS，编译JS和打包处理图片，甚至更多事情。</li>
-<li>他支持AMD和CommonJs以及其他的模块化系统（Angular，ES6）。如果你不知道用什么，那么可以用CommonJs。</li>
-</ul>
-<h1 id="怎么安装Webpack"><a href="#怎么安装Webpack" class="headerlink" title="怎么安装Webpack"></a>怎么安装Webpack</h1><p><strong>安装node.js</strong></p>
-<p>首先需要安装Node.js，node自带了包管理工具npm。</p>
-<p><strong>安装webpack</strong></p>
-<p>使用 <code>npm install webpack -g</code> ，webpack全局安装到了本地环境中，就可以使用webpack命令了。</p>
-<p><strong>在项目中使用webpack</strong></p>
-<p>通过 <code>npm init</code> 实例化package.json文件。<br>通过 <code>npm install webpack --save-dev</code> 安装webpack到package.json文件中。<br>或者通过 <code>npm install webpack@1.2.x --save-dev</code> 安装指定版本的webpack到package.json文件中。<br>通过 <code>npm install webpack-dev-server --save-dev</code> 安装dev tools到package.json文件中，本地运行webpack服务。</p>
-<h1 id="怎么使用Webpack"><a href="#怎么使用Webpack" class="headerlink" title="怎么使用Webpack"></a>怎么使用Webpack</h1><p>1.安装webpack后，可以使用webpack这个命令行工具。主要命令：<code>webpack &lt;entry&gt; &lt;output&gt;</code>  。可以切换到包含webpack.config.js的目录运行命令：</p>
-<p><code>webpack</code> 执行一次开发时的编译<br><code>webpack -p</code> 执行一次生成环境的编译（压缩）<br><code>webpack --watch</code> 在开发时持续监控增量编译（很快）<br><code>webpack -d</code> 让他生成SourceMaps<br><code>webpack --progress</code> 显示编译进度<br><code>webpack --colors</code> 显示静态资源的颜色<br><code>webpack --sort-modules-by, --sort-chunks-by, --sort-assets-by</code> 将modules/chunks/assets进行列表排序<br><code>webpack --display-chunks</code> 展示编译后的分块<br><code>webpack --display-reasons</code> 显示更多引用模块原因<br><code>webapck --display-error-details</code> 显示更多报错信息</p>
-<p>2、每个项目下都必须配置有一个 webpack.config.js，它的作用如同常规的 gulpfile.js/Gruntfile.js ，就是一个配置项，告诉 webpack 它需要做什么。<br>下面看一个简单的示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">var webpack = require(&apos;webpack&apos;);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line"></div><div class="line">    //页面入口文件配置</div><div class="line">    entry: &#123;</div><div class="line">        index : &apos;./src/main.js&apos;</div><div class="line">    &#125;,</div><div class="line">    //入口文件输出配置</div><div class="line">    output: &#123;</div><div class="line">        path: __dirname +&apos;/dist/&apos;,</div><div class="line">        filename: &apos;[name].js&apos;</div><div class="line">    &#125;,</div><div class="line">    module: &#123;</div><div class="line">        //加载器配置</div><div class="line">        loaders: [</div><div class="line">            &#123; test: /\.css$/, loader: &apos;style-loader!css-loader&apos; &#125;,</div><div class="line">            &#123; test: /\.scss$/, loader: &apos;style!css!sass?sourceMap&apos;&#125;,</div><div class="line">            &#123; test: /\.(png|jpg)$/, loader: &apos;url-loader?limit=8192&apos;&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    //插件项</div><div class="line">    plugins: [</div><div class="line">        //提公用js到common.js文件中</div><div class="line">        new webpack.optimize.CommonsChunkPlugin(&apos;common.js&apos;),</div><div class="line">        //将样式统一发布到style.css中</div><div class="line">        new ExtractTextPlugin(&quot;style.css&quot;, &#123;</div><div class="line">            allChunks: true,</div><div class="line">            disable: false</div><div class="line">        &#125;),</div><div class="line">        //使用ProvidePlugin加载使用频率高的模块</div><div class="line">        new webpack.ProvidePlugin(&#123;</div><div class="line">            $: &quot;webpack-zepto&quot;</div><div class="line">        &#125;)</div><div class="line">    ],</div><div class="line">    //其它解决方案配置</div><div class="line">    resolve: &#123;</div><div class="line">        extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.json&apos;, &apos;.scss&apos;],</div><div class="line">        alias: &#123;</div><div class="line">            filter: path.join(__dirname, &apos;src/filters&apos;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p><strong>entry</strong></p>
-<blockquote>
-<p>entry是页面入口文件配置，可以是一个文件或者多个入口文件，可以是对象格式或者数组格式。</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">entry: &#123;</div><div class="line">    index : &apos;./src/main.js&apos;</div><div class="line">&#125; </div><div class="line">entry:[&apos;./src/main.js&apos;,&apos;./src/index.js&apos;]</div></pre></td></tr></table></figure>
-<p><strong>output</strong></p>
-<blockquote>
-<p>output 是对应输出项配置,主要包括path,filename和publishPath属性。path代表输出的路径，filename代表输出的文件名称，publishPath代表静态资源发布后的前缀地址。</p>
-</blockquote>
-<p><strong>module.loaders</strong></p>
-<p>module.loaders 是最关键的一块配置。它告知 webpack 每一种文件都需要使用什么加载器来处理。点击<a href="http://webpack.github.io/docs/list-of-loaders.html" target="_blank" rel="external">这里</a>可以查看loader list。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module: &#123;</div><div class="line">    //加载器配置</div><div class="line">    loaders: [</div><div class="line">        //.css 文件使用 style-loader 和 css-loader 来处理</div><div class="line">        &#123; test: /\.css$/, loader: &apos;style-loader!css-loader&apos; &#125;,</div><div class="line">        //.scss 文件使用 style-loader、css-loader 和 sass-loader 来编译处理</div><div class="line">        &#123; test: /\.scss$/, loader: &apos;style!css!sass?sourceMap&apos;&#125;,</div><div class="line">        //图片文件使用 url-loader 来处理，小于8kb的直接转为base64</div><div class="line">        &#123; test: /\.(png|jpg)$/, loader: &apos;url-loader?limit=8192&apos;&#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>loader主要有3种使用方式：</strong><br>1、在页面里面引用资源使用</p>
-<p>require(“url-loader?mimetype=image/png!./file.png”);</p>
-<p>2、在webpack.config.js文件夹中使用</p>
-<p>{ test: /.png$/, loader: “url?mimetype=image/png” };</p>
-<p>3、在命令行中编译使用</p>
-<p>webpack –module-bind “png=url-loader?mimetype=image/png”;</p>
-<p>如上，”-loader”其实是可以省略不写的，多个loader之间用“!”连接起来。<br>注意所有的加载器都需要通过 npm 来加载，并建议查阅它们对应的 readme 来看看如何使用。<br>拿最后一个 url-loader 来说，它会将样式中引用到的图片转为模块来处理，使用该加载器需要先进行安装：<br><code>npm install url-loader -save-dev</code><br>配置信息的参数“?limit=8192”表示将所有小于8kb的图片都转为base64形式（其实应该说超过8kb的才使用 url-loader 来映射到文件，否则转为data url形式）。也可以使用file-loader来加载资源文件。</p>
-<p><strong>plugins</strong></p>
-<p><a href="http://webpack.github.io/docs/using-plugins.html" target="_blank" rel="external">plugins</a> 是插件项，这里我们使用了一个 CommonsChunkPlugin 的插件，它用于提取多个入口文件的公共脚本部分，然后生成一个 common.js 来方便多页面之间进行复用。点击<a href="http://webpack.github.io/docs/list-of-plugins.html" target="_blank" rel="external">这里</a>可以查看plugins list。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">plugins: [</div><div class="line">    //提公用js到common.js文件中</div><div class="line">    new webpack.optimize.CommonsChunkPlugin(&apos;common.js&apos;),</div><div class="line">    //将样式统一发布到style.css中</div><div class="line">    new ExtractTextPlugin(&quot;style.css&quot;, &#123;</div><div class="line">        allChunks: true,</div><div class="line">        disable: false</div><div class="line">    &#125;),</div><div class="line">    //使用ProvidePlugin加载使用频率高的模块</div><div class="line">    new webpack.ProvidePlugin(&#123;</div><div class="line">        $: &quot;webpack-zepto&quot;</div><div class="line">    &#125;)</div><div class="line">]</div></pre></td></tr></table></figure>
-<p><strong>如上，包含两种：</strong><br>1.第一种webpack自带的一些插件：<code>webpack.ProvidePlugin</code> 、<code>webpack.optimize.CommonsChunkPlugin</code><br>2.另外一种则通过npm包安装的：ExtractTextPlugin。</p>
-<p><strong>resolve</strong></p>
-<p>最后是 resolve 配置，这块很好理解，直接写注释了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">    // require时省略的扩展名，如：require(&apos;module&apos;) 不需要module.js</div><div class="line">    extension: [&apos;&apos;, &apos;.js&apos;],</div><div class="line">    //别名</div><div class="line">    alias: &#123;</div><div class="line">        filter: path.join(__dirname, &apos;src/filters&apos;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="使用Webpack-dev-server"><a href="#使用Webpack-dev-server" class="headerlink" title="使用Webpack-dev-server"></a>使用Webpack-dev-server</h1><p><a href="http://webpack.github.io/docs/webpack-dev-server.html" target="_blank" rel="external">webpack-dev-server</a>是基于node.js Express服务，它同时包含了一个基于<a href="https://socket.io/docs/" target="_blank" rel="external">Socket.IO</a>轻量的运行时环境。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&apos;use strict&apos;</div><div class="line">var webpack = require(&apos;webpack&apos;);</div><div class="line">var WebpackDevServer = require(&apos;webpack-dev-server&apos;);</div><div class="line">var config = require(&apos;./webpack.config&apos;);</div><div class="line">// 配置代码自动编译和热替换插件</div><div class="line">config.entry.unshift(&apos;webpack-dev-server/client?http://localhost:9090&apos;, &quot;webpack/hot/dev-server&quot;);</div><div class="line">config.plugins.push(new webpack.HotModuleReplacementPlugin());</div><div class="line">// 这里配置：请求http://localhost:9090/index.php，</div><div class="line">// 相当于通过本地node服务代理请求到了http://testapi.uhouzz.com/index.php</div><div class="line">var proxy = [&#123;</div><div class="line">    path: &quot;/index.php/*&quot;,</div><div class="line">    target: &quot;http://pc.uhouzz.com&quot;,</div><div class="line">    host: &quot;pc.uhouzz.com&quot;</div><div class="line">&#125;]</div><div class="line">//启动服务</div><div class="line">var app = new WebpackDevServer(webpack(config), &#123;</div><div class="line">    publicPath: config.output.publicPath,</div><div class="line">    hot:true,</div><div class="line">    historyApiFallback: true,</div><div class="line">    proxy:proxy</div><div class="line">&#125;);</div><div class="line">app.listen(9090);</div></pre></td></tr></table></figure>
-<p>如上，引用 <code>webpack</code> 和 <code>webpack-dev-server</code> 模块，通过WebpackDevServer启动服务，通过 <code>HotModuleReplacementPlugin</code> 插件启动代码自动编译页面自动刷新。这样，当你修改了html、js或者样式文件，页面会自动编译刷新。</p>
-<h1 id="html页面使用"><a href="#html页面使用" class="headerlink" title="html页面使用"></a>html页面使用</h1><p>直接在页面引入 webpack 最终生成的页面脚本和样式文件即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">    &lt;title&gt;webpack test&lt;/title&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;/dist/style.css&quot;&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;script src=&quot;/dist/common.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;/dist/build.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-
-          
+          Webpack是什么首先可以看下官方文档，文档是最好的老师。这里也有国外的一个朋友写的入门介绍。Webpack是由Tobias Koppers开发的一个开源前端模块构建工具。它的基本功能是将以模块格式书写的多个JavaScript文件打包成一个文件，同时支持CommonJS和AMD格式。但让它与众不
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/03/webpack-demo/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -467,33 +400,6 @@
 
     
       
-
-
-         
-
-
-#以下部分为：字数统计、阅读时长插入代码
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">(分)</span>
-
-         </span>
-#以上部分为：字数统计、阅读时长插入代码
-
 
   
 
@@ -601,8 +507,15 @@
       
         
           
-            <h3 id="style-”display-block-width-100-”"><a href="#style-”display-block-width-100-”" class="headerlink" title="style=”display: block;width: 100%;”"></a>style=”display: block;width: 100%;”</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        *&#123;</div><div class="line">            margin: 0;</div><div class="line">            padding: 0;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div&gt;</div><div class="line">    &lt;img style=&quot;display: block;width: 100%;&quot; src=&quot;about_banner.png&quot; alt=&quot;&quot;&gt;</div><div class="line">    &lt;img style=&quot;display: block;width: 100%;&quot; src=&quot;about_advertise.png&quot; alt=&quot;&quot;&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-          
+          style=”display: block;width: 100%;”1234567891011121314151617181920&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charse
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/31/img-fullScreen/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -636,33 +549,6 @@
 
     
       
-
-
-         
-
-
-#以下部分为：字数统计、阅读时长插入代码
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">(分)</span>
-
-         </span>
-#以上部分为：字数统计、阅读时长插入代码
-
 
   
 
@@ -770,77 +656,19 @@
       
         
           
-            <h1 id="前端优化问题"><a href="#前端优化问题" class="headerlink" title="前端优化问题"></a>前端优化问题</h1><ul>
-<li>减少http请求次数：css spirit,data uri</li>
-<li>JS，CSS源码压缩</li>
-<li>前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数</li>
-<li>用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能</li>
-<li>当需要设置的样式很多时设置className而不是直接操作style </li>
-<li>图片预载</li>
-<li>避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢</li>
-<li>保持良好的编程习惯，避免重复的CSS，JavaScript代码，多余的HTML标签和属性</li>
-</ul>
-<h1 id="实现DIV的水平垂直居中"><a href="#实现DIV的水平垂直居中" class="headerlink" title="实现DIV的水平垂直居中"></a>实现DIV的水平垂直居中</h1><blockquote>
-<p>宽高已定(父、子容器宽高都固定大小)</p>
-</blockquote>
-<p><strong>设置position: absolute(父元素记得设置: relative), 然后top和left设置50%, 50%, 再设置margin-left=宽/2, margin-top:宽/2</strong></p>
-<blockquote>
-<p>父容器固定宽高，子容器固定宽高或不设置宽高</p>
-</blockquote>
-<p><strong>依然是利用position：子div的上下左右都设置成0，然后margin设置auto。关键是要设置position：子absolute，父relative。</strong></p>
-<blockquote>
-<p>不论是否固定宽高都可用. 问题在于兼容性. ie9及以下不支持</p>
-</blockquote>
-<p><strong>设置父级flex属性: display:flex; justify-content:center; align-items: center;</strong></p>
-<h3 id="html"><a href="#html" class="headerlink" title="html"></a>html</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;div1&quot;&gt;</div><div class="line">    &lt;div class=&quot;div2&quot;&gt;</div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;div2&quot;&gt;</div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;div2&quot;&gt;</div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">.div1&#123;</div><div class="line">    width:500px;</div><div class="line">    height:500px;</div><div class="line">    border:1px solid black;</div><div class="line">    display: flex;</div><div class="line">    justify-content: center;</div><div class="line">    align-items: center;</div><div class="line">&#125;</div><div class="line">.div2&#123;</div><div class="line">    background: yellow;</div><div class="line">    width:100px;</div><div class="line">    height:100px;</div><div class="line">    margin-right: 5px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>父子容器都设宽高</p>
-</blockquote>
-<p><strong>父级元素设置display:table-cell ，然后vertical-align：middle。这种方法可以设置垂直居中. 这时候只要在子元素里设置margin:auto即可实现水平居中</strong></p>
-<blockquote>
-<p>让DIV在页面水平垂直居中</p>
-</blockquote>
-<h3 id="css-1"><a href="#css-1" class="headerlink" title="css"></a>css</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">*&#123;</div><div class="line">    margin:0;</div><div class="line">    padding: 0;</div><div class="line">&#125;</div><div class="line">.div1&#123;</div><div class="line">    width: 200px;</div><div class="line">    height: 200px;</div><div class="line">    background-color: yellow;</div><div class="line">    position: absolute;</div><div class="line">    top:50%;</div><div class="line">    left: 50%;</div><div class="line">    margin-left: -100px;</div><div class="line">    margin-top: -100px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="图片替换方法"><a href="#图片替换方法" class="headerlink" title="图片替换方法"></a>图片替换方法</h1><ul>
-<li>text-indent属性，并且给其设置一个较大的负值，x达到隐藏文本的效果</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;h1 class=&quot;technique-three&quot;&gt;w3cplus&lt;/h1&gt;</div><div class="line"> </div><div class="line">.technique-three &#123;</div><div class="line">  width: 329px;</div><div class="line">  height: 79px;</div><div class="line">  background: url(images/w3cplus-logo.png);</div><div class="line">  text-indent: -9999px;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="js有哪些基本类型"><a href="#js有哪些基本类型" class="headerlink" title="js有哪些基本类型?"></a>js有哪些基本类型?</h1><ul>
-<li>基本数据类型：Undefined, Null, Boolean, Number, String</li>
-<li>引用数据类型： Object, Array, Date, RegExp, Function</li>
-</ul>
-<h1 id="基本类型与引用类型有什么区别"><a href="#基本类型与引用类型有什么区别" class="headerlink" title="基本类型与引用类型有什么区别?"></a>基本类型与引用类型有什么区别?</h1><ul>
-<li>存储<br>基本类型值在内存中占据固定大小的空间,因此被保存在栈内存中<br>引用类型的值是对象, 保存在堆内存中. 包含引用类型的变量实际上包含的并不是对象本身, 而是一个指向该对象的指针　</li>
-<li>复制<br>从一个变量向另一个变量复制基本类型的值, 会创建这个值的一个副本<br>从一个变量向另一个变量复制引用类型的值, 复制的其实是指针,　因此两个变量最终都指向同一个对象</li>
-<li>检测类型<br>确定一个值是哪种基本类型可以用typeof操作符,<br>而确定一个值是哪种引用类型可以使用instanceof操作符</li>
-</ul>
-<h1 id="apply和call的用法和区别"><a href="#apply和call的用法和区别" class="headerlink" title="apply和call的用法和区别"></a>apply和call的用法和区别</h1><p><strong>apply和call的区别在哪里</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">apply和call都能继承另外一个对象的方法和属性；</div><div class="line">Function.apply(obj,args)方法能接收两个参数</div><div class="line">obj：这个对象将代替Function类里this对象</div><div class="line">args：这个是数组，它将作为参数传给Function（args--&gt;arguments）</div><div class="line"></div><div class="line">call:和apply的意思一样,只不过是参数列表不一样.</div><div class="line">Function.call(obj,[param1[,param2[,…[,paramN]]]])</div><div class="line">obj：这个对象将代替Function类里this对象</div><div class="line">params：这个是一个参数列表</div></pre></td></tr></table></figure>
-<p><strong>call()和apply()示例展示</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">*定义一个Person类*/ </div><div class="line">function Person(name,age) &#123; </div><div class="line">     this.name=name; </div><div class="line">     this.age=age;</div><div class="line">&#125; </div><div class="line"> /*定义一个学生类*/ </div><div class="line"> function Student(name,age,grade) &#123; </div><div class="line">    //Person.apply(this,arguments);//特点：this指代student对象，只接收2个参数，arguments为隐式类数组对象，用来接收传入的参数；</div><div class="line">      Person.call(this,name,age);//特点：this指代student对象，可以接收任意多个参数</div><div class="line">      this.grade=grade; </div><div class="line"> &#125; </div><div class="line"> var student =new Student(&quot;zhangsan&quot;,22,&quot;二年级&quot;);//方法Student()也是object的一个实例</div><div class="line"> //测试 </div><div class="line"> alert(&quot;name:&quot;+student.name+&quot;\n&quot;+&quot;age:&quot;+student.age+&quot;\n&quot;+&quot;grade:&quot;+student.grade);</div><div class="line">//学生类里面我没有给name和age属性赋值啊,为什么又存在这两个属性的值呢,这个就是apply的神奇之处.</div></pre></td></tr></table></figure>
-<p><strong>结果</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">name:zhangsan</div><div class="line">age:22</div><div class="line">grade:&quot;二年级&quot;</div></pre></td></tr></table></figure></p>
-<p><strong>什么情况下用apply,什么情况下用call</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">使用apply的情况：在给对象参数的情况下,如果参数的形式是数组的时候,比如apply示例里面传递了参数arguments,这个参数是数组类型。</div><div class="line"></div><div class="line">使用call的情况： 如果我的Person的参数列表是这样的(age,name),而Student的参数列表是(name,age,grade),这样就可以用call来实现了,也就是直接指定参数列表对应值的位置(Person.call(this,age,name,grade));</div></pre></td></tr></table></figure>
-<h1 id="什么是闭包-闭包有什么作用"><a href="#什么是闭包-闭包有什么作用" class="headerlink" title="什么是闭包? 闭包有什么作用?"></a>什么是闭包? 闭包有什么作用?</h1><ul>
-<li>闭包是指有权访问另一个函数作用域中的变量的函数. 创建闭包常见方式,就是在一个函数内部创建另一个函数.</li>
-<li>作用: <ul>
-<li>匿名自执行函数  (function (){ … })();   创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，因此在执行完后很快就会被释放，关键是这种机制不会污染全局对象。</li>
-<li>缓存, 可保留函数内部的值</li>
-<li>实现封装</li>
-<li>实现模板</li>
-</ul>
-</li>
-<li><a href="http://blog.csdn.net/sunlylorn/article/details/6534610" target="_blank" rel="external">js闭包的用途</a></li>
-</ul>
-<h1 id="指出-document-load-和-document-ready-两个事件的区别"><a href="#指出-document-load-和-document-ready-两个事件的区别" class="headerlink" title="指出 document load 和 document ready 两个事件的区别"></a>指出 document load 和 document ready 两个事件的区别</h1><ul>
-<li>一是ready，表示文档结构已经加载完成（不包含图片等非文字媒体文件）</li>
-<li>二是onload，指示页面包含图片等文件在内的所有元素都加载完成。</li>
-<li>jQuery中$(function(){/<em> do something</em>/});他的作用或者意义就是:在DOM加载完成后就可以可以对DOM进行操作。一般情况先一个页面响应加载的顺序是，域名解析-加载html-加载js和css-加载图片等其他信息。</li>
-</ul>
-<h1 id="图片预加载的实现"><a href="#图片预加载的实现" class="headerlink" title="图片预加载的实现"></a>图片预加载的实现</h1><p><a href="http://www.cnblogs.com/haoyijing/p/5818236.html#imgLoad2" target="_blank" rel="external">图片预加载</a></p>
-
-          
+          前端优化问题
+减少http请求次数：css spirit,data uri
+JS，CSS源码压缩
+前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
+用innerHTML代替DOM操作，减少DOM操作次数，优化javas
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/31/front-end/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -874,33 +702,6 @@
 
     
       
-
-
-         
-
-
-#以下部分为：字数统计、阅读时长插入代码
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">(分)</span>
-
-         </span>
-#以上部分为：字数统计、阅读时长插入代码
-
 
   
 
@@ -1008,15 +809,16 @@
       
         
           
-            <h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><p>this表示当前对象，如果在全局作用范围内使用this，则指代当前页面对象window； 如果在函数中使用this，则this指代什么是根据运行时此函数在什么对象上被调用。 我们还可以使用apply和call两个全局方法来改变函数中this的具体指向。</p>
-<p><strong>先看一个在全局作用范围内使用this的例子：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(this === window);  // true</div><div class="line">console.log(window.alert === this.alert);  // true</div><div class="line">console.log(this.parseInt(&quot;021&quot;, 10));  // 10</div></pre></td></tr></table></figure></p>
-<p><strong>函数中的this是在运行时决定的，而不是函数定义时，如下：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">// 定义一个全局函数</div><div class="line">    function foo() &#123;</div><div class="line">        console.log(this.fruit);</div><div class="line">    &#125;</div><div class="line">    // 定义一个全局变量，等价于window.fruit = &quot;apple&quot;;</div><div class="line">    var fruit = &quot;apple&quot;;</div><div class="line">    // 此时函数foo中this指向window对象</div><div class="line">    // 这种调用方式和window.foo();是完全等价的</div><div class="line">    foo();  // &quot;apple&quot;</div><div class="line">    </div><div class="line">    // 自定义一个对象，并将此对象的属性foo指向全局函数foo</div><div class="line">    var pack = &#123;</div><div class="line">        fruit: &quot;orange&quot;,</div><div class="line">        foo: foo</div><div class="line">    &#125;;</div><div class="line">    // 此时函数foo中this指向window.pack对象</div><div class="line">    pack.foo(); // &quot;orange&quot;</div></pre></td></tr></table></figure></p>
-<p><strong>全局函数apply和call可以用来改变函数中this的指向，如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 定义一个全局函数</div><div class="line">    function foo() &#123;</div><div class="line">        console.log(this.fruit);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 定义一个全局变量</div><div class="line">    var fruit = &quot;apple&quot;;</div><div class="line">    // 自定义一个对象</div><div class="line">    var pack = &#123;</div><div class="line">        fruit: &quot;orange&quot;</div><div class="line">    &#125;;</div><div class="line">    </div><div class="line">    // 等价于window.foo();</div><div class="line">    foo.apply(window);  // &quot;apple&quot;</div><div class="line">    // 此时foo中的this === pack</div><div class="line">    foo.apply(pack);    // &quot;orange&quot;</div></pre></td></tr></table></figure>
-<p><strong>注：apply和call两个函数的作用相同，唯一的区别是两个函数的参数定义不同。</strong></p>
-<p><strong>因为在JavaScript中函数也是对象，所以我们可以看到如下有趣的例子：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">// 定义一个全局函数</div><div class="line">    function foo() &#123;</div><div class="line">        if (this === window) &#123;</div><div class="line">            console.log(&quot;this is window.&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 函数foo也是对象，所以可以定义foo的属性boo为一个函数</div><div class="line">    foo.boo = function() &#123;</div><div class="line">        if (this === foo) &#123;</div><div class="line">            console.log(&quot;this is foo.&quot;);</div><div class="line">        &#125; else if (this === window) &#123;</div><div class="line">            console.log(&quot;this is window.&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    // 等价于window.foo();</div><div class="line">    foo();  // this is window.</div><div class="line">    </div><div class="line">    // 可以看到函数中this的指向调用函数的对象</div><div class="line">    foo.boo();  // this is foo.</div><div class="line">    </div><div class="line">    // 使用apply改变函数中this的指向</div><div class="line">    foo.boo.apply(window);  // this is window.</div></pre></td></tr></table></figure></p>
-
-          
+          thisthis表示当前对象，如果在全局作用范围内使用this，则指代当前页面对象window； 如果在函数中使用this，则this指代什么是根据运行时此函数在什么对象上被调用。 我们还可以使用apply和call两个全局方法来改变函数中this的具体指向。
+先看一个在全局作用范围内使用this的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/30/vue-this/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1050,33 +852,6 @@
 
     
       
-
-
-         
-
-
-#以下部分为：字数统计、阅读时长插入代码
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">(分)</span>
-
-         </span>
-#以上部分为：字数统计、阅读时长插入代码
-
 
   
 
@@ -1184,12 +959,18 @@
       
         
           
-            <h3 id="js数组主要的方法"><a href="#js数组主要的方法" class="headerlink" title="js数组主要的方法"></a>js数组主要的方法</h3><blockquote>
-<p>var arr = [0,1,2];</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1 、shift():删除数组的第一个元素,返回删除的值。这里是0</div><div class="line">2 、unshift(3,4):把参数加载数组的前面，返回数组的长度。现在list:中是3,4,0,1,2</div><div class="line">3、pop():删除数组的最后一个元素，返回删除的值。这里是2.</div><div class="line">4、push(3):将参数加载到数组的最后，返回数组的长度，现在List中时：0,1,2,3</div><div class="line">5、concat(3,4):把两个数组拼接起来。</div><div class="line">6、splice(start,deleteCount,val1,val2,...)：从start位置开始删除deleteCount项，并从该位置起插入val1,val2,...</div><div class="line">7、reverse：将数组反序</div><div class="line">8、sort(orderfunction)：按指定的参数对数组进行排序 var a = [1,2,3,4,5]; var b = a.sort(); //a：[1,2,3,4,5] b：[1,2,3,4,5]</div><div class="line">9、slice(start,end)：返回从原数组中指定开始下标到结束下标之间的项组成的新数组</div></pre></td></tr></table></figure>
+          js数组主要的方法
+var arr = [0,1,2];
 
-          
+1234567891 、shift():删除数组的第一个元素,返回删除的值。这里是02 、unshift(3,4):把参数加载数组的前面，返回数组的长度。现在list:中是3,4,0,1,23、pop():删除数组的最后一个元素，返回删除的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/28/js-arr-fun/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1223,33 +1004,6 @@
 
     
       
-
-
-         
-
-
-#以下部分为：字数统计、阅读时长插入代码
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">(分)</span>
-
-         </span>
-#以上部分为：字数统计、阅读时长插入代码
-
 
   
 
@@ -1357,21 +1111,16 @@
       
         
           
-            <h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p><strong>首先看下闭包的一个简单案例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function A()&#123;</div><div class="line">    function B()&#123;</div><div class="line">       console.log(&quot;Hello haorooms!&quot;);</div><div class="line">    &#125;</div><div class="line">    return B;</div><div class="line">&#125;</div><div class="line">var c = A();</div><div class="line">c();//Hello haorooms!</div></pre></td></tr></table></figure>
-<p><strong>这个例子是一个比较简单的闭包，解释如下：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(1)定义了一个普通函数A</div><div class="line">(2)在A中定义了普通函数B</div><div class="line">(3)在A中返回B（确切的讲，在A中返回B的引用）</div><div class="line">(4)执行A(),把A的返回结果赋值给变量 c</div><div class="line">(5)执行 c()</div></pre></td></tr></table></figure></p>
-<p>当一个内部函数被其外部函数之外的变量引用时，就形成了一个闭包。</p>
-<h3 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h3><p>在上述例子中，B定义在A中，因此B依赖于A,而外部变量 c 又引用了B, 所以A间接的被 c 引用，也就是说，A不会被回收，会一直保存在内存中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function A()&#123;</div><div class="line">    var count = 0;</div><div class="line">    function B()&#123;</div><div class="line">       count ++;</div><div class="line">       console.log(count);</div><div class="line">    &#125;</div><div class="line">    return B;</div><div class="line">&#125;</div><div class="line">var c = A();</div><div class="line">c();// 1</div><div class="line">c();// 2</div><div class="line">c();// 3</div></pre></td></tr></table></figure></p>
-<p>count是A中的一个变量，它的值在B中被改变，函数B每执行一次，count的值就在原来的基础上累加1。因此，A中的count一直保存在内存中。</p>
-<p>这就是闭包的作用，有时候我们需要一个模块中定义这样一个变量：希望这个变量一直保存在内存中但又不会“污染”全局的变量，这个时候，我们就可以用闭包来定义这个模块。</p>
-<h3 id="闭包的含义和理解"><a href="#闭包的含义和理解" class="headerlink" title="闭包的含义和理解"></a>闭包的含义和理解</h3><p><strong>通俗地讲，JavaScript 中每个的函数都是一个闭包，但通常意义上嵌套的函数更能够体现出闭包的特性，请看下面这个例子：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var generateClosure = function() &#123;</div><div class="line">    var count = 0;</div><div class="line">    var get = function() &#123;</div><div class="line">        count ++;</div><div class="line">        return count;</div><div class="line">       &#125;;</div><div class="line">       return  get;</div><div class="line">    &#125; </div><div class="line">&#125;;</div><div class="line">var   counter   =   generateClosure();</div><div class="line">console.log(counter());   //   输出   1</div><div class="line">console.log(counter());   //   输出   2</div><div class="line">console.log(counter());   //   输出   3</div></pre></td></tr></table></figure></p>
-<p>这段代码中，generateClosure() 函数中有一个局部变量count，初值为 0。还有一个叫做 get 的函数，get 将其父作用域，也就是 generateClosure() 函数中的 count变量增加 1，并返回 count 的值。generateClosure() 的返回值是 get 函数。在外部我们通过 counter变量调用了 generateClosure() 函数并获取了它的返回值，也就是 get 函数，接下来反复调用几次 counter()，我们发现每次返回的值都递增了1。</p>
-<p>让我们看看上面的例子有什么特点，按照通常命令式编程思维的理解，count 是generateClosure 函数内部的变量，它的生命周期就是 generateClosure 被调用的时期，当 generateClosure 从调用栈中返回时，count 变量申请的空间也就被释放。问题是，generateClosure() 调用结束后，counter() 却引用了“已经释放了的” count变量，而且非但没有出错，反而每次调用 counter() 时还修改并返回了 count。这是怎么回事呢？</p>
-<p>这正是所谓闭包的特性。<strong>当一个函数返回它内部定义的一个函数时，就产生了一个闭包，闭包不但包括被返回的函数，还包括这个函数的定义环境。</strong> 上面例子中，当函数generateClosure() 的内部函数 get 被一个外部变量 counter 引用时，counter 和generateClosure()的局部变量就是一个闭包。如果还不够清晰，下面这个例子可以帮助你理解：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var   generateClosure   =   function()   &#123;</div><div class="line">    var   count   =   0;</div><div class="line">    var   get   =   function()   &#123;</div><div class="line">        count   ++;</div><div class="line">        return   count;</div><div class="line">    &#125;;</div><div class="line">    return   get;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var   counter1   =   generateClosure();</div><div class="line">var   counter2   =   generateClosure();</div><div class="line">console.log(counter1());   //   输出   1</div><div class="line">console.log(counter2());   //   输出   1</div><div class="line">console.log(counter1());   //   输出   2</div><div class="line">console.log(counter1());   //   输出   3</div><div class="line">console.log(counter2());   //   输出   2</div></pre></td></tr></table></figure>
-<p>上面这个例子解释了闭包是如何产生的： counter1和counter2分别调用了generate-Closure() 函数，生成了两个闭包的实例，它们内部引用的 count 变量分别属于各自的运行环境。我们可以理解为，在 generateClosure() 返回 get 函数时，私下将 get 可能引用到的 generateClosure() 函数的内部变量（也就是 count 变量）也返回了，并在内存中生成了一个副本，之后 generateClosure() 返回的函数的两个实例 counter1和 counter2 就是相互独立的了。</p>
-
-          
+          案例首先看下闭包的一个简单案例
+12345678function A()&#123;    function B()&#123;       console.log(&quot;Hello haorooms!&quot;);    &#125;    return B;&#125;var c = A
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/28/js-closure/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1405,33 +1154,6 @@
 
     
       
-
-
-         
-
-
-#以下部分为：字数统计、阅读时长插入代码
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">(分)</span>
-
-         </span>
-#以上部分为：字数统计、阅读时长插入代码
-
 
   
 
@@ -1539,17 +1261,20 @@
       
         
           
-            <h3 id="vue的一些简单指令-这些放在标签里"><a href="#vue的一些简单指令-这些放在标签里" class="headerlink" title="vue的一些简单指令(这些放在标签里)"></a>vue的一些简单指令(这些放在标签里)</h3><ul>
-<li><code>v-text</code> : 只显示文本</li>
-<li><code>v-html</code> : 先处理html标签，然后把内容显示出来</li>
-<li><code>v-for</code> : 遍历对象或数组</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;div id=&quot;app&quot;&gt;</div><div class="line">  &lt;p v-html=&quot;title&quot;&gt;&#123;&#123;message&#125;&#125;&lt;/p&gt;</div><div class="line">  &lt;ul&gt;   </div><div class="line">    &lt;li v-for=&quot;(value, key, index) in people&quot;&gt;</div><div class="line">      &#123;&#123;index&#125;&#125;-&#123;&#123;key&#125;&#125;-&#123;&#123;value&#125;&#125;</div><div class="line">    &lt;/li&gt;</div><div class="line">  &lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">new Vue(&#123;</div><div class="line">  el: &apos;#app&apos;,</div><div class="line">  data: &#123;</div><div class="line">    title: &apos;&lt;span&gt;hi, &lt;/span&gt;Hello Vue.js!&apos;,</div><div class="line">    message: &apos;how are you&apos;,</div><div class="line">    items: [</div><div class="line">        &#123;message: &apos;working&apos;&#125;,</div><div class="line">        &#123;message: &apos;eating&apos;&#125;</div><div class="line">    ],</div><div class="line">    people: &#123;</div><div class="line">    	first: &apos;deng&apos;,</div><div class="line">      last: &apos;caihong&apos;,</div><div class="line">      full: &apos;deng caihong&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h3 id="创建一个todolist"><a href="#创建一个todolist" class="headerlink" title="创建一个todolist"></a>创建一个todolist</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;todo-list-example&quot;&gt;</div><div class="line">  &lt;input</div><div class="line">    v-model=&quot;newTodoText&quot;</div><div class="line">    v-on:keyup.enter=&quot;addNewTodo&quot;</div><div class="line">    placeholder=&quot;Add a todo&quot;</div><div class="line">  &gt;</div><div class="line">  &lt;ul&gt;</div><div class="line">    &lt;li</div><div class="line">      is=&quot;todo-item&quot;</div><div class="line">      v-for=&quot;(todo, index) in todos&quot;</div><div class="line">      v-bind:title=&quot;todo&quot;</div><div class="line">      v-on:remove=&quot;todos.splice(index, 1)&quot;</div><div class="line">    &gt;&lt;/li&gt;</div><div class="line">  &lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">Vue.component(&apos;todo-item&apos;, &#123;</div><div class="line">  template: &apos;\</div><div class="line">    &lt;li&gt;\</div><div class="line">      &#123;&#123; title &#125;&#125;\</div><div class="line">      &lt;button v-on:click=&quot;$emit(\&apos;remove\&apos;)&quot;&gt;X&lt;/button&gt;\</div><div class="line">    &lt;/li&gt;\</div><div class="line">  &apos;,</div><div class="line">  props: [&apos;title&apos;]</div><div class="line">&#125;)</div><div class="line">new Vue(&#123;</div><div class="line">  el: &apos;#todo-list-example&apos;,</div><div class="line">  data: &#123;</div><div class="line">    newTodoText: &apos;&apos;,</div><div class="line">    todos: [</div><div class="line">      &apos;Do the dishes&apos;,</div><div class="line">      &apos;Take out the trash&apos;,</div><div class="line">      &apos;Mow the lawn&apos;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    addNewTodo: function () &#123;</div><div class="line">      this.todos.push(this.newTodoText)</div><div class="line">      this.newTodoText = &apos;&apos;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+          vue的一些简单指令(这些放在标签里)
+v-text : 只显示文本
+v-html : 先处理html标签，然后把内容显示出来
+v-for : 遍历对象或数组
 
-          
+123456789&lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/24/vue-base/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1583,33 +1308,6 @@
 
     
       
-
-
-         
-
-
-#以下部分为：字数统计、阅读时长插入代码
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">(分)</span>
-
-         </span>
-#以上部分为：字数统计、阅读时长插入代码
-
 
   
 
@@ -1762,33 +1460,6 @@
     
       
 
-
-         
-
-
-#以下部分为：字数统计、阅读时长插入代码
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">(分)</span>
-
-         </span>
-#以上部分为：字数统计、阅读时长插入代码
-
-
   
 
   
@@ -1935,33 +1606,6 @@
 
     
       
-
-
-         
-
-
-#以下部分为：字数统计、阅读时长插入代码
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">(分)</span>
-
-         </span>
-#以上部分为：字数统计、阅读时长插入代码
-
 
   
 
